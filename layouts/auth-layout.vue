@@ -1,0 +1,1 @@
+<template>Auth Layout</template>
