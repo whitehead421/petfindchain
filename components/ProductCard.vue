@@ -1,5 +1,5 @@
 <template>
-  <div class="card flex flex-col border-dark border">
+  <div class="card flex flex-col border-dark border cursor-pointer hover:scale-105 active:scale-100">
     <div class="flex justify-center bg-white p-4 w-full h-full">
       <img :src="image" :alt="name" class="w-36 h-36 object-contain" />
     </div>
@@ -11,7 +11,7 @@
       <img
         src="~/assets/icons/cart.svg"
         alt="Add to cart"
-        class="w-8 cursor-pointer active:scale-95"
+        class="w-8"
       />
     </div>
   </div>

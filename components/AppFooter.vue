@@ -5,7 +5,7 @@
       <span class="text-primary">FIND</span>
       CHAIN
     </h1>
-    <p class="flex flex-col text-center text-sm">
+    <p class="flex flex-col text-center">
       <span class="text-neutral-300">© 2023-2024 PetFindChain</span>
       <span class="text-neutral-300">All rights reserved.</span>
     </p>

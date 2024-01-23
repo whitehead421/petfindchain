@@ -1,15 +1,17 @@
 <template>
-  <div class="text-slide">
-    <span>PET</span>
-    <div class="text-wrap">
-      <div class="text">
-        <span>FIND</span>
-        <span>LOVE</span>
-        <span>CARE</span>
+  <NuxtLink :to="'/'">
+    <div class="text-slide">
+      <span>PET</span>
+      <div class="text-wrap">
+        <div class="text">
+          <span>FIND</span>
+          <span>LOVE</span>
+          <span>CARE</span>
+        </div>
       </div>
+      <span>CHAIN</span>
     </div>
-    <span>CHAIN</span>
-  </div>
+  </NuxtLink>
 </template>
 
 <style scoped>

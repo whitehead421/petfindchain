@@ -2,25 +2,24 @@
   <header
     class="flex justify-between items-center border border-gray px-10 border-collapse"
   >
-    <!-- <h1 class="text-3xl flex font-bold">
-      PET
-      <span class="text-primary">FIND</span>
-      CHAIN
-    </h1> -->
     <AnimatedLogo />
     <nav>
       <ul class="flex w-full h-20">
-        <li
+        <NuxtLink
           v-for="navItem in navList"
           :key="navItem.name"
-          class="text-gray h-full flex items-center justify-center px-8"
-          :class="{
-            '!text-primary bg-primary/10 border-primary border-b-4':
-              navItem.active,
-          }"
+          :to="navItem.path"
         >
-          <NuxtLink :to="navItem.path">{{ navItem.name }}</NuxtLink>
-        </li>
+          <li
+            class="text-gray h-full flex items-center justify-center px-8"
+            :class="{
+              '!text-primary bg-primary/10 border-primary border-b-4':
+                navItem.active,
+            }"
+          >
+            {{ navItem.name }}
+          </li>
+        </NuxtLink>
       </ul>
     </nav>
     <Metamask @connect="initWeb3" />

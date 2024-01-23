@@ -19,6 +19,38 @@
         <img src="~/assets/images/hero.png" alt="Hero" />
       </div>
     </section>
+    <!-- Workflow section -->
+    <section class="bg-white text-center p-8 border-b">
+      <h2 class="uppercase text-primary text-sm font-bold">HOW IT WORKS</h2>
+      <h3 class="text-4xl my-4">
+        We are <b>simple</b> and <b>easy</b> to use
+      </h3>
+      <div class="flex justify-center mt-10 p-8 gap-4">
+        <div class="grid grid-cols-2 justify-center">
+          <WorkflowCard
+          icon="/_nuxt/assets/icons/lost.svg"
+          title="Lost your pet?"
+          description="Have you lost your beloved pet? Our blockchain-powered platform makes the process of finding and reuniting with your furry friend easier than ever. Register your pet's details securely, activate smart contracts for lost pet reports, and leverage the power of our decentralized network to bring your pet home."
+          />
+          <WorkflowCard
+          icon="/_nuxt/assets/icons/pet.svg"
+          title="Found a pet?"
+          description="Found a lost pet? Become a hero in their story! Report your discovery on our blockchain platform, creating a smart contract with essential details. Join the decentralized search network, collaborate with the community, and contribute to the pet's journey back to its owner."
+          />
+          <WorkflowCard
+          icon="/_nuxt/assets/icons/adopt.svg"
+          title="Adopt a pet"
+          description="Browse through verified profiles, connect with pets in need, and initiate the adoption process seamlessly on our blockchain-powered platform. Embrace the joy of giving a loving home, where transparency and simplicity redefine the adoption experience."
+          />
+          <WorkflowCard
+          icon="/_nuxt/assets/icons/reward.svg"
+          title="Earn rewards"
+          description="Join our decentralized network, report found pets through our blockchain platform, and contribute to the community-driven effort of bringing pets home. As a Pet Hero, enjoy transparent and secure reward transactions through our blockchain system."
+          />
+        </div>
+      </div>
+    </section>
+
     <!-- Support section -->
     <section class="bg-white h-screen text-center p-8 border-b">
       <h2 class="uppercase text-primary text-sm font-bold">SUPPORT US</h2>
