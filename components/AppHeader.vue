@@ -2,11 +2,12 @@
   <header
     class="flex justify-between items-center border border-gray px-10 border-collapse"
   >
-    <h1 class="text-3xl flex font-bold">
+    <!-- <h1 class="text-3xl flex font-bold">
       PET
       <span class="text-primary">FIND</span>
       CHAIN
-    </h1>
+    </h1> -->
+    <AnimatedLogo />
     <nav>
       <ul class="flex w-full h-20">
         <li
