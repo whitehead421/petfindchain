@@ -1,7 +1,10 @@
 <template>
   <div class="w-full h-screen bg-secondary">
     <AppHeader :navList="navList" />
-    <slot></slot>
+    <div class="flex-grow">
+      <slot></slot>
+    </div>
+    <AppFooter :navList="navList" />
   </div>
 </template>
 
