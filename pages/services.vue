@@ -3,8 +3,8 @@
     <h1 class="text-center my-10">SERVICES PAGE</h1>
     <div>
       <p>Network: {{ web3.networkId }}</p>
-      <p>Account: {{ web3.coinbase }}</p>
-      <p>Balance: {{ web3.balance }}</p>
+      <p>Wallet address: {{ web3.coinbase }}</p>
+      <p>Balance: {{ web3.balance / 1e18 }}</p>
     </div>
   </div>
 </template>
