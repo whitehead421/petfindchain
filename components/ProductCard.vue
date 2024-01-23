@@ -1,7 +1,7 @@
 <template>
-  <div class="card flex flex-col gap-4 border-dark border">
-    <div class="flex justify-center bg-white p-4 w-36 h-36">
-      <img :src="image" :alt="name" class="w-full h-full object-contain" />
+  <div class="card flex flex-col border-dark border">
+    <div class="flex justify-center bg-white p-4 w-full h-full">
+      <img :src="image" :alt="name" class="w-36 h-36 object-contain" />
     </div>
     <div class="flex justify-between bg-secondary p-2 px-6 text-left">
       <div class="flex flex-col gap-1">
@@ -21,7 +21,7 @@
 defineProps({
   name: String,
   description: String,
-  price: Number,
+  price: String,
   image: String,
 });
 </script>
