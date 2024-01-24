@@ -2,7 +2,7 @@ import { ethers } from "ethers";
 import CONTRACT from "~/contractJson/PetRegistry.json";
 
 const web3Store = useWeb3Store();
-const contractAddress = ref("0xe46BfeF2F622C710598841b7C980aDD4e04976FB");
+const contractAddress = ref("0x8b43D7adDf99B107b29975eBe82f3700e0E60f6e");
 const contractABI = ref(CONTRACT.abi);
 
 export default async function () {
@@ -18,6 +18,7 @@ export default async function () {
       autoConnect: false,
     };
     localStorage.setItem("preferences", JSON.stringify(preferences));
+    console.log('ether parsed:', ethers.parseEther("1.0"));
     try {
       // Ask to connect
       await ethereum.send("eth_requestAccounts");
