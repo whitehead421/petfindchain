@@ -11,6 +11,12 @@
     >
       CLICK TO ADD RANDOM PET
     </button>
+    <button
+      @click="buyPetFood"
+      class="card !w-min-content !truncate active:scale-95"
+    >
+      CLICK TO Buy PET FOOD
+    </button>
     <div v-for="pet in allPets" :key="pet.microchipId" class="card">
       {{ pet.owner }}
       <br />
@@ -28,6 +34,7 @@
 </template>
 
 <script setup>
+import {ethers} from "ethers";
 const web3Store = useWeb3Store();
 const allPets = ref([]);
 
@@ -49,6 +56,20 @@ const addPet = async () => {
     );
     await transaction.wait();
     console.log("contract", await web3Store.web3.contract.getAllPets());
+  } else {
+    console.log("no contract");
+  }
+};
+
+const buyPetFood = async () => {
+  if (web3Store.web3.contract) {
+    console.log(ethers);
+    const amountInETH = ethers.parseEther("0.000000004");
+    const amount = {value: amountInETH};
+    console.log(amount);
+    const transaction = await web3Store.web3.contract.buyPetFood(4000000000n, amount);
+    await transaction.wait();
+    console.log("transaction successfully completed",);
   } else {
     console.log("no contract");
   }

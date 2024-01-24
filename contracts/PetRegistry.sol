@@ -9,16 +9,24 @@ contract PetRegistry {
         string name;
         string breed;
         string color;
+        string lastSeenLocation;
         uint256 age;
         bool isFound;
     }
 
+    // Contract owner to transfer funds
+    address payable public owner;
     // Registered pet count
     uint registeredPetCount;
     // Mapping to store pet information using a unique identifier (e.g., microchip ID)
     mapping(uint256 => Pet) public pets;
     // Array for storing all the pets
     Pet[] public allPets;
+
+     // Constructor - set the owner at deployment
+    constructor() {
+        owner = payable(msg.sender);
+    }
 
     // Event to notify when a new pet is added
     event PetAdded(uint256 microchipId, address owner, string name);
@@ -29,6 +37,7 @@ contract PetRegistry {
         string calldata name,
         string calldata breed,
         string calldata color,
+        string calldata lastSeenLocation,
         uint256 age
     ) external {
         // Ensure the microchip ID is unique
@@ -44,6 +53,7 @@ contract PetRegistry {
             name,
             breed,
             color,
+            lastSeenLocation,
             age,
             false
         );
@@ -81,5 +91,17 @@ contract PetRegistry {
     // Function to get pets
     function getAllPets() external view returns (Pet[] memory) {
         return allPets;
+    }
+
+    // Function to buy pet food 
+    function buyPetFood(uint256 amount) external payable {
+        // Ensure the caller is not the owner of the contract
+        require(msg.sender != owner, "You are the owner of the contract");
+        // Ensure the caller has sent some ether
+        require(msg.value > 0, "You need to send some ether");
+        // Ensure the sent ether matches the specified amount
+        require(msg.value == amount, "Sent ether does not match the specified amount");
+        // Transfer the ether to the owner of the contract
+        owner.transfer(msg.value);
     }
 }
