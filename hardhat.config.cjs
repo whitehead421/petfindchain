@@ -1,4 +1,3 @@
-require("@nomiclabs/hardhat-ganache");
 require("@nomicfoundation/hardhat-toolbox");
 require("dotenv").config();
 
