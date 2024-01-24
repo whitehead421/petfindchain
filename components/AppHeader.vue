@@ -32,6 +32,7 @@ const web3Store = useWeb3Store();
 const isAuthenticated = computed(() => {
   return web3Store.account !== null;
 });
+
 defineProps({
   navList: {
     type: Array,

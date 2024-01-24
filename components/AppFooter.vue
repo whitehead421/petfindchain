@@ -1,5 +1,5 @@
 <template>
-  <footer class="flex justify-between items-center px-10 bg-[#323136] h-48">
+  <footer class="flex justify-between items-center px-10 bg-[#323136] h-24">
     <h1 class="text-3xl flex font-bold text-white">
       PET
       <span class="text-primary">FIND</span>

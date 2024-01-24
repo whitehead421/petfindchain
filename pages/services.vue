@@ -1,5 +1,7 @@
 <template>
-  <div class="flex flex-col items-center justify-center gap-2 my-10">
+  <div
+    class="flex flex-col items-center justify-center gap-2 min-h-[calc(100vh-11rem-2px)]"
+  >
     <div class="card">
       {{ web3Store.account }}
     </div>

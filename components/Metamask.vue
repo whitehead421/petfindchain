@@ -7,24 +7,31 @@
       'text-white bg-primary': disabled,
     }"
   >
-    <img
-      src="https://upload.wikimedia.org/wikipedia/commons/3/36/MetaMask_Fox.svg"
-      alt="Metamask"
-      class="h-5 mr-2"
-      :class="{
-        'group-hover:animate-spin duration-1000': !disabled,
-      }"
-    />
-    {{ web3Store.account ? accountShortener(web3Store.account) : "Connect" }}
+    <div class="relative w-5 h-5 mr-2">
+      <img
+        src="~/assets/icons/metamask-fox.svg"
+        alt="Metamask"
+        class="absolute top-0 left-0 w-full h-full"
+        :class="{
+          'group-hover:opacity-0 duration-1000': !disabled,
+        }"
+      />
+      <img
+        src="~/assets/icons/metamask-fox-light.svg"
+        alt="Metamask"
+        class="absolute top-0 left-0 w-full h-full opacity-0"
+        :class="{
+          'group-hover:opacity-100': !disabled,
+        }"
+      />
+    </div>
+
+    {{ web3Store.account ? addressShortener(web3Store.account) : "Connect" }}
   </button>
 </template>
 
 <script setup>
 const web3Store = useWeb3Store();
-
-const accountShortener = (account) => {
-  return `${account.slice(0, 6)}...${account.slice(-4)}`;
-};
 
 defineProps({
   disabled: {
