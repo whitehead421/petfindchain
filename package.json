@@ -1,42 +1,30 @@
 {
-  "name": "nuxt-app",
-  "private": true,
-  "type": "module",
+  "name": "petfindchain",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "hardhat": "^2.19.4"
   },
   "devDependencies": {
-    "@nomicfoundation/hardhat-chai-matchers": "^2.0.3",
-    "@nomicfoundation/hardhat-ethers": "^3.0.5",
-    "@nomicfoundation/hardhat-network-helpers": "^1.0.10",
+    "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
+    "@nomicfoundation/hardhat-ethers": "^3.0.0",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
     "@nomicfoundation/hardhat-toolbox": "^4.0.0",
-    "@nomicfoundation/hardhat-verify": "^2.0.3",
-    "@nomiclabs/hardhat-ganache": "^2.0.1",
-    "@nuxt/image": "^1.1.0",
-    "@nuxtjs/google-fonts": "^3.1.3",
-    "@typechain/ethers-v6": "^0.5.1",
-    "@typechain/hardhat": "^9.1.0",
-    "autoprefixer": "^10.4.16",
-    "chai": "4.3.7",
-    "ethers": "^6.10.0",
-    "hardhat": "^2.19.4",
-    "hardhat-gas-reporter": "^1.0.9",
-    "nuxt": "^3.9.0",
-    "postcss": "^8.4.33",
-    "solidity-coverage": "^0.8.5",
-    "tailwindcss": "^3.4.0",
-    "typechain": "^8.3.2",
-    "vue": "^3.4.5",
-    "vue-router": "^4.2.5"
-  },
-  "dependencies": {
-    "@pinia/nuxt": "^0.5.1",
-    "dotenv": "^16.3.2",
-    "pinia": "^2.1.7",
-    "web3": "^4.4.0"
+    "@nomicfoundation/hardhat-verify": "^2.0.0",
+    "@typechain/ethers-v6": "^0.5.0",
+    "@typechain/hardhat": "^9.0.0",
+    "chai": "^4.2.0",
+    "dotenv": "^16.4.0",
+    "ethers": "^6.4.0",
+    "hardhat-gas-reporter": "^1.0.8",
+    "solidity-coverage": "^0.8.0",
+    "typechain": "^8.3.0"
   }
 }
