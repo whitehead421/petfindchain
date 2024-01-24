@@ -3,27 +3,27 @@ import { defineStore } from "pinia";
 export const useWeb3Store = defineStore("web3", {
   state: () => ({
     web3: {
-      networkId: null,
-      coinbase: null,
-      balance: null,
+      provider: null,
+      signer: null,
+      contract: null,
     },
+    account: null,
   }),
   getters: {
-    // doubleCount: (state) => state.count * 2,
     getInstance: (state) => state.web3,
+    getAccount: (state) => state.account,
   },
   actions: {
-    // increment() {
-    //   this.count++;
-    // },
     registerWeb3Instance(payload) {
-      console.log("registerWeb3Instance Action being executed", payload);
       let result = payload;
       let web3Copy = this.web3;
-      web3Copy.coinbase = result.coinbase;
-      web3Copy.networkId = result.networkId;
-      web3Copy.balance = parseInt(result.balance, 10);
+      web3Copy.signer = result.signer;
+      web3Copy.provider = result.provider;
+      web3Copy.contract = result.contract;
       this.web3 = web3Copy;
+    },
+    registerAccount(payload) {
+      this.account = payload;
     },
   },
 });

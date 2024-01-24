@@ -1,16 +1,25 @@
 <template>
-  <main class="flex flex-col">
-    <section class="flex gap-8 p-10 border-b items-center">
+  <div class="flex flex-col">
+    <section class="flex gap-8 p-20 items-center border-b bg-secondary">
       <div class="w-1/2 flex items-center">
         <img src="~/assets/images/cat-cage.png" alt="CatCage" />
       </div>
       <div class="w-1/2 flex items-center justify-center">
-        <h1 class="text-5xl">What is PET<span class="text-primary">FIND</span>CHAIN?</h1>
+        <h1 class="text-5xl">
+          What is
+          <span class="font-bold text-primary"
+            >PET<span class="text-black">FIND</span>CHAIN?</span
+          >
+        </h1>
       </div>
     </section>
-    <section class="flex gap-8 p-10 flex-col gap-8 p-8 ">
-      <div class="flex">
-        <h3 class="text-3xl text-primary">What is PetFindChain?</h3>
+    <section class="flex flex-col gap-8 p-8">
+      <div class="flex flex-col justify-center items-center text-center">
+        <h2 class="uppercase text-primary text-sm font-bold">About Us</h2>
+        <h3 class="text-4xl my-4">
+          <!-- Its like something about us -->
+          Our <UiHighlightedText>mission</UiHighlightedText> and <b>vision</b>
+        </h3>
       </div>
       <div class="w-1/2 flex items-center justify-center">
         <p>
@@ -24,14 +33,18 @@
         </p>
       </div>
     </section>
-    <section class="flex gap-8 p-10 flex-col items-end gap-8 p-8 ">
+    <section class="flex gap-8 p-10 flex-col items-end">
       <div class="flex">
         <h3 class="text-3xl text-primary">Our Mission</h3>
       </div>
-      <div class="text-right flex  justify-center">
+      <div class="text-right flex justify-center">
         <div class="w-1/2 flex items-center justify-center">
-        <img src="~/assets/images/pet-care.png" alt="pet care" class="w-1/4" />
-      </div>
+          <img
+            src="~/assets/images/pet-care.png"
+            alt="pet care"
+            class="w-1/4"
+          />
+        </div>
         <p class="w-1/2">
           Our mission is to provide a decentralized and efficient solution for
           pet owners facing the heart-wrenching experience of a lost pet. By
@@ -43,23 +56,34 @@
         </p>
       </div>
     </section>
-    <section class="flex gap-8 p-10 flex-col gap-8 p-8 ">
+    <section class="flex gap-8 p-10 flex-col">
       <div class="flex">
         <h3 class="text-3xl text-primary">Core Values</h3>
       </div>
       <div class="w-1/2 flex items-center justify-center">
-
         <ul>
-          <li><span class="font-semibold text-gray">Transparency:</span> We believe in open and honest communication to build trust within our community.</li>
-          <li><span class="font-semibold text-gray">Reliability:</span> Our platform is designed with robust technology to ensure a dependable and effective search for lost pets.</li>
-          <li><span class="font-semibold text-gray">Community-Oriented:</span> PetFindChain thrives on the strength of our community. We encourage collaboration and mutual support.</li>
-          <li><span class="font-semibold text-gray">Compassion:</span> We understand the emotional toll of losing a pet and approach every case with empathy and care.</li>
+          <li>
+            <span class="font-semibold text-gray">Transparency:</span> We
+            believe in open and honest communication to build trust within our
+            community.
+          </li>
+          <li>
+            <span class="font-semibold text-gray">Reliability:</span> Our
+            platform is designed with robust technology to ensure a dependable
+            and effective search for lost pets.
+          </li>
+          <li>
+            <span class="font-semibold text-gray">Community-Oriented:</span>
+            PetFindChain thrives on the strength of our community. We encourage
+            collaboration and mutual support.
+          </li>
+          <li>
+            <span class="font-semibold text-gray">Compassion:</span> We
+            understand the emotional toll of losing a pet and approach every
+            case with empathy and care.
+          </li>
         </ul>
       </div>
     </section>
-  </main>
+  </div>
 </template>
-
-<script setup></script>
-
-<style lang="scss" scoped></style>

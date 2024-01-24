@@ -1,6 +1,6 @@
 <template>
   <header
-    class="flex justify-between items-center border border-gray px-10 border-collapse"
+    class="flex justify-between items-center border border-gray px-10 border-collapse bg-secondary"
   >
     <AnimatedLogo />
     <nav>
@@ -22,57 +22,20 @@
         </NuxtLink>
       </ul>
     </nav>
-    <Metamask @connect="initWeb3" />
-    <teleport to="body">
-      <UiSpinner v-if="loading" />
-    </teleport>
+    <Metamask @click="initWeb3" :disabled="isAuthenticated" />
   </header>
 </template>
 
 <script setup>
 const web3Store = useWeb3Store();
-import Web3 from "web3";
 
+const isAuthenticated = computed(() => {
+  return web3Store.account !== null;
+});
 defineProps({
   navList: {
     type: Array,
     required: true,
   },
 });
-
-const loading = ref(false);
-
-const initWeb3 = async () => {
-  loading.value = true;
-  // Check for web3 provider
-  if (typeof window.ethereum !== "undefined") {
-    try {
-      // Ask to connect
-      await window.ethereum.send("eth_requestAccounts");
-      const instance = new Web3(window.ethereum);
-      // Get necessary info on your node
-      const networkId = await instance.eth.net.getId();
-      const coinbase = await instance.eth.getCoinbase();
-      const balance = await instance.eth.getBalance(coinbase);
-      // Save it to store
-      web3Store.registerWeb3Instance({
-        networkId,
-        coinbase,
-        balance,
-      });
-      loading.value = false;
-    } catch (error) {
-      // User denied account access
-      console.error("User denied web3 access", error);
-      loading.value = false;
-      return;
-    }
-  }
-  // No web3 provider
-  else {
-    console.error("No web3 provider detected");
-    loading.value = false;
-    return;
-  }
-};
 </script>

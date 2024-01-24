@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-screen bg-secondary">
+  <div class="w-full h-screen">
     <AppHeader :navList="navList" />
     <div class="flex-grow">
       <slot></slot>

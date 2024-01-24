@@ -1,18 +1,73 @@
 <template>
-  <div class="text-center">
-    <h1 class="text-center my-10">SERVICES PAGE</h1>
-    <div>
-      <p>Network: {{ web3.networkId }}</p>
-      <p>Wallet address: {{ web3.coinbase }}</p>
-      <p>Balance: {{ web3.balance / 1e18 }}</p>
+  <div class="flex flex-col items-center justify-center gap-2 my-10">
+    <div class="card">
+      {{ web3Store.account }}
+    </div>
+    <button
+      @click="addPet"
+      class="card !w-min-content !truncate active:scale-95"
+    >
+      CLICK TO ADD RANDOM PET
+    </button>
+    <div v-for="pet in allPets" :key="pet.microchipId" class="card">
+      {{ pet.owner }}
+      <br />
+      {{ pet.microchipId }}
+      <br />
+      {{ pet.name }}
+      <br />
+      {{ pet.breed }}
+      <br />
+      {{ pet.color }}
+      <br />
+      {{ pet.age }}
     </div>
   </div>
 </template>
 
 <script setup>
 const web3Store = useWeb3Store();
+const allPets = ref([]);
 
-const web3 = web3Store.getInstance;
+//  function addPet(
+//         uint256 microchipId,
+//         string memory name,
+//         string memory breed,
+//         string memory color,
+//         uint256 age
+//     ) external {
+const addPet = async () => {
+  if (web3Store.web3.contract) {
+    const transaction = await web3Store.web3.contract.addPet(
+      "233234",
+      "Catty",
+      "Cat",
+      "Black",
+      1
+    );
+    await transaction.wait();
+    console.log("contract", await web3Store.web3.contract.getAllPets());
+  } else {
+    console.log("no contract");
+  }
+};
+
+watchEffect(async () => {
+  if (web3Store.web3.contract) {
+    const response = await web3Store.web3.contract.getAllPets();
+    const pets = await response;
+    allPets.value = pets;
+  }
+});
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.card {
+  @apply w-min;
+  @apply px-2 py-1;
+  @apply font-thin;
+  @apply border;
+  @apply border-[#dfe0e1] bg-[#f8f9fa];
+  @apply rounded-md;
+}
+</style>
