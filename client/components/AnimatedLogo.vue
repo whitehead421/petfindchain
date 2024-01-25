@@ -21,7 +21,6 @@
   color: #fa615b;
   font-size: 30px;
   font-weight: 700;
-  animation: fade-in ease 3s forwards;
 }
 
 .text-slide > div {
@@ -41,15 +40,6 @@
   position: relative;
   animation: text-animation ease 6s infinite;
   animation-delay: 1s;
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
 }
 
 @keyframes text-animation {

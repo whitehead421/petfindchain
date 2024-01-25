@@ -6,13 +6,13 @@
       :class="{ 'bg-secondary !text-primary': !pet.isFound }"
     >
       <span class="capitalize">
-        {{ pet.name }}
+        {{ pet.name }} <span class="text-xs">({{ pet.age }})</span>
       </span>
       <span
         title="View on Etherscan"
         @click="goToTransaction(pet.owner)"
         class="text-xs underline cursor-pointer font-thin text-secondary"
-        :class="{ '!text-primary': !pet.isFound }"
+        :class="{ 'bg-secondary !text-primary': !pet.isFound }"
       >
         {{ addressShortener(pet.owner) }}
       </span>

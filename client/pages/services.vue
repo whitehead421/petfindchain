@@ -17,47 +17,11 @@
 </template>
 
 <script setup>
-import { ethers } from "ethers";
 const web3Store = useWeb3Store();
 
 const loading = ref(false);
 const allPets = ref([]);
 const isOpen = ref(false);
-
-const cols = [
-  {
-    key: "owner",
-    label: "Owner Address",
-  },
-  {
-    key: "microchipId",
-    label: "Microchip ID",
-  },
-  {
-    key: "name",
-    label: "Name",
-  },
-  {
-    key: "color",
-    label: "Color",
-  },
-  {
-    key: "location",
-    label: "Location",
-  },
-  {
-    key: "breed",
-    label: "Breed",
-  },
-  {
-    key: "age",
-    label: "Age",
-  },
-  {
-    key: "isFound",
-    label: "Is Found",
-  },
-];
 
 const openAddModal = () => {
   isOpen.value = true;
@@ -72,26 +36,11 @@ const handleGetAllPets = async () => {
   loading.value = false;
 };
 
-const isAuthenticated = computed(() => {
-  return web3Store.account !== null;
-});
-
-const ONE_USD_IN_ETH = 0.000448;
-// const ONE_WEI_IN_ETH = 0.000000000000000001;
-
-// Lets say food is 20.99 USD
-const buyPetFood = async () => {
+watchEffect(() => {
   if (web3Store.web3.contract) {
-    const amount = ethers.parseEther((ONE_USD_IN_ETH * 20.99).toString());
-    const transaction = await web3Store.web3.contract.buyPetFood(amount, {
-      value: amount,
-    });
-    await transaction.wait();
-    console.log("transaction successfully completed");
-  } else {
-    console.log("no contract");
+    handleGetAllPets();
   }
-};
+});
 
 onMounted(async () => {
   await handleGetAllPets();

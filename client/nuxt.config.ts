@@ -21,7 +21,16 @@ export default defineNuxtConfig({
       },
     ],
     "@pinia/nuxt",
+    "@cssninja/nuxt-toaster",
   ],
+  app: {
+    head: {
+      charset: "utf-8",
+      viewport: "width=device-width, initial-scale=1",
+      titleTemplate: "PetFindChain",
+    },
+    pageTransition: { name: "page", mode: "out-in" },
+  },
 
   // routeRules: {
   //   // Homepage pre-rendered at build time

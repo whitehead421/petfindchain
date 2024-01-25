@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { ethers } from "ethers";
 
 export const useWeb3Store = defineStore("web3", {
   state: () => ({
@@ -28,7 +29,8 @@ export const useWeb3Store = defineStore("web3", {
       this.account = payload;
     },
     async addPetToChain(payload) {
-      console.log("addPetToChain", payload);
+      const { $nt } = useNuxtApp();
+
       if (this.web3.contract) {
         let transaction = await this.web3.contract.addPet(
           payload.microchipId,
@@ -41,10 +43,18 @@ export const useWeb3Store = defineStore("web3", {
         await transaction.wait();
         this.pets = await this.web3.contract.getAllPets();
       } else {
-        console.log("No contract found");
+        $nt.show({
+          content: "No contract found!",
+          duration: 2000,
+          transition: {
+            name: "fadeIn",
+          },
+        });
       }
     },
     async getAllPets() {
+      const { $nt } = useNuxtApp();
+
       if (this.web3.contract) {
         const response = await this.web3.contract.getAllPets();
         const pets = await response;
@@ -62,10 +72,52 @@ export const useWeb3Store = defineStore("web3", {
             isFound: pet.isFound,
           });
         }
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+        $nt.show({
+          content: "Pets fetched succesfully!",
+          duration: 2000,
+          transition: {
+            name: "fadeIn",
+          },
+        });
         return petsArray;
       } else {
-        console.log("No contract found");
+        $nt.show({
+          content: "No contract found!",
+          duration: 2000,
+          transition: {
+            name: "fadeIn",
+          },
+        });
+      }
+    },
+    async buyPetFood() {
+      const { $nt } = useNuxtApp();
+
+      const ONE_USD_IN_ETH = 0.000448;
+      // const ONE_WEI_IN_ETH = 0.000000000000000001;
+
+      // Lets say food is 20.99 USD
+      if (this.web3.contract) {
+        const amount = ethers.parseEther((ONE_USD_IN_ETH * 11.2).toString());
+        const transaction = await this.web3.contract.buyPetFood(amount, {
+          value: amount,
+        });
+        await transaction.wait();
+        $nt.show({
+          content: "Transaction successful!",
+          duration: 2000,
+          transition: {
+            name: "fadeIn",
+          },
+        });
+      } else {
+        $nt.show({
+          content: "No contract found!",
+          duration: 2000,
+          transition: {
+            name: "fadeIn",
+          },
+        });
       }
     },
   },

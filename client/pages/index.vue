@@ -19,8 +19,12 @@
         </p>
         <!-- Button container -->
         <div class="flex gap-4">
-          <UiButton variant="primary"> Find your pet </UiButton>
-          <UiButton variant="secondary"> Help others </UiButton>
+          <UiButton variant="primary" @click="$router.push('/services')">
+            Find your pet
+          </UiButton>
+          <UiButton variant="secondary" @click="$router.push('/services')">
+            Help others
+          </UiButton>
         </div>
       </div>
       <div class="w-1/2 flex items-center justify-center">
@@ -67,46 +71,22 @@
       </h3>
       <div class="flex justify-center gap-24 mt-10">
         <ProductCard
-          name="Whiskas"
-          price="74.99"
-          image="/_nuxt/assets/images/cat-food.png"
-        />
-        <ProductCard
-          name="Perfet FIT"
-          price="107.99"
-          image="/_nuxt/assets/images/dog-food-dark.png"
-        />
-        <ProductCard
-          name="North Paw"
-          price="44.99"
-          image="/_nuxt/assets/images/cat-food-dark.png"
-        />
-        <ProductCard
-          name="Dog Food"
-          price="123.99"
-          image="/_nuxt/assets/images/dog-food.png"
+          @click="handleBuy(food.price)"
+          v-for="food in foods"
+          :key="food.name"
+          :name="food.name"
+          :price="food.price"
+          :image="food.image"
         />
       </div>
       <div class="flex justify-center gap-24 mt-10">
         <ProductCard
-          name="Kong Classic"
-          price="74.99"
-          image="/_nuxt/assets/images/dog-toy.png"
-        />
-        <ProductCard
-          name="Perfet FIT"
-          price="107.99"
-          image="/_nuxt/assets/images/dog-food-dark.png"
-        />
-        <ProductCard
-          name="Plush Toy"
-          price="44.99"
-          image="/_nuxt/assets/images/dog-toy-2.png"
-        />
-        <ProductCard
-          name="Dog Food"
-          price="123.99"
-          image="/_nuxt/assets/images/dog-food.png"
+          @click="handleBuy(toy.price)"
+          v-for="toy in toys"
+          :key="toy.name"
+          :name="toy.name"
+          :price="toy.price"
+          :image="toy.image"
         />
       </div>
     </section>
@@ -142,12 +122,69 @@
       </div>
     </section>
     <Newsletter />
+    <UiSpinner v-if="loading" />
   </main>
 </template>
 
 <script setup>
+const web3Store = useWeb3Store();
+
 const text = "We'll help you to find your pet.";
 const textArray = text.split(/(?!$)/u);
+const loading = ref(false);
+
+const foods = [
+  {
+    name: "Whiskas",
+    price: "74.99",
+    image: "/_nuxt/assets/images/cat-food.png",
+  },
+  {
+    name: "Perfet FIT",
+    price: "107.99",
+    image: "/_nuxt/assets/images/dog-food-dark.png",
+  },
+  {
+    name: "North Paw",
+    price: "44.99",
+    image: "/_nuxt/assets/images/cat-food-dark.png",
+  },
+  {
+    name: "Dog Food",
+    price: "123.99",
+    image: "/_nuxt/assets/images/dog-food.png",
+  },
+];
+const toys = [
+  {
+    name: "Kong Classic",
+    price: "74.99",
+    image: "/_nuxt/assets/images/dog-toy.png",
+  },
+  {
+    name: "Perfet FIT",
+    price: "107.99",
+    image: "/_nuxt/assets/images/dog-food-dark.png",
+  },
+  {
+    name: "Plush Toy",
+    price: "44.99",
+    image: "/_nuxt/assets/images/dog-toy-2.png",
+  },
+  {
+    name: "Dog Food",
+    price: "123.99",
+    image: "/_nuxt/assets/images/dog-food.png",
+  },
+];
+
+const handleBuy = async (price) => {
+  if (web3Store.web3.contract && web3Store.account) {
+    loading.value = true;
+    await web3Store.buyPetFood(price);
+    loading.value = false;
+  }
+};
 </script>
 
 <style scoped>
