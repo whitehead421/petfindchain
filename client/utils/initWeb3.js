@@ -2,7 +2,7 @@ import { ethers } from "ethers";
 import CONTRACT from "~/contractJson/PetRegistry.json";
 
 const web3Store = useWeb3Store();
-const contractAddress = ref("0x8b43D7adDf99B107b29975eBe82f3700e0E60f6e");
+const contractAddress = ref("0xB11F7a40a6f741c60b93a7964D555db04450C387");
 const contractABI = ref(CONTRACT.abi);
 
 export default async function () {
@@ -28,7 +28,7 @@ export default async function () {
         method: "eth_requestAccounts",
       });
       // Set the first account in the store
-      console.log("Account connected", accounts[0]);
+      console.log("Account connected from provider: ", accounts[0]);
       web3Store.registerAccount(accounts[0]);
 
       // Provider is for reading the blockchain
@@ -66,3 +66,4 @@ export default async function () {
 // const contractAddress = ref("0x6A2B49f74983cA16668B609d5fa2cbE0739fc131");
 // const contractAddress = ref("0xf026f6a987DA1ceebc9302a50cCA2041c6ef23B4");
 // const contractAddress = ref("0x3E2E0aEaaEEf41229e100eAf90fde58C4e0A55a8");
+// const contractAddress = ref("0x8b43D7adDf99B107b29975eBe82f3700e0E60f6e");

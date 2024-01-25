@@ -1,5 +1,15 @@
 <template>
-  <div class="card flex flex-col h-min w-72 cursor-pointer">
+  <div
+    class="card relative flex flex-col h-min w-72 cursor-pointer"
+    :class="{
+      '!border-4 !border-primary !shadow-none': selected,
+    }"
+  >
+    <img
+      v-if="pet.isFound"
+      src="~/assets/icons/party.svg"
+      class="absolute -top-10 -right-10 w-16 h-16"
+    />
     <!-- Card Header -->
     <div
       class="text-lg text-center p-2 px-10 text-white bg-primary flex flex-col"
@@ -41,10 +51,15 @@
 </template>
 
 <script setup>
-defineProps({
+const props = defineProps({
   pet: {
     type: Object,
     required: true,
+  },
+  selected: {
+    type: Boolean,
+    required: false,
+    default: false,
   },
 });
 

@@ -87,6 +87,8 @@ const location = ref("");
 const breed = ref("");
 const age = ref(0);
 
+const { $nt } = useNuxtApp();
+
 defineProps({
   isOpen: {
     type: Boolean,
@@ -94,10 +96,34 @@ defineProps({
   },
 });
 
-defineEmits(["close"]);
+const emit = defineEmits(["close"]);
 
 const addPet = async () => {
-  console.log("Adding pet...");
+  if (!microchipId.value) {
+    $nt.show("Please enter a microchip ID!");
+    return;
+  }
+  if (!name.value) {
+    $nt.show("Please enter a name!");
+    return;
+  }
+  if (!color.value) {
+    $nt.show("Please enter a color!");
+    return;
+  }
+  if (!location.value) {
+    $nt.show("Please enter a location!");
+    return;
+  }
+  if (!breed.value) {
+    $nt.show("Please enter a breed!");
+    return;
+  }
+  if (!age.value) {
+    $nt.show("Please enter an age!");
+    return;
+  }
+
   loading.value = true;
   const pet = {
     microchipId: microchipId.value,
@@ -109,6 +135,7 @@ const addPet = async () => {
   };
   await web3Store.addPetToChain(pet);
   loading.value = false;
+  emit("close");
 };
 </script>
 

@@ -26,6 +26,7 @@ export const useWeb3Store = defineStore("web3", {
       this.web3 = web3Copy;
     },
     registerAccount(payload) {
+      console.log("Account saved to store: ", payload);
       this.account = payload;
     },
     async addPetToChain(payload) {
@@ -96,7 +97,6 @@ export const useWeb3Store = defineStore("web3", {
       const ONE_USD_IN_ETH = 0.000448;
       // const ONE_WEI_IN_ETH = 0.000000000000000001;
 
-      // Lets say food is 20.99 USD
       if (this.web3.contract) {
         const amount = ethers.parseEther((ONE_USD_IN_ETH * 11.2).toString());
         const transaction = await this.web3.contract.buyPetFood(amount, {
@@ -110,6 +110,39 @@ export const useWeb3Store = defineStore("web3", {
             name: "fadeIn",
           },
         });
+      } else {
+        $nt.show({
+          content: "No contract found!",
+          duration: 2000,
+          transition: {
+            name: "fadeIn",
+          },
+        });
+      }
+    },
+    async markAsFound(payload) {
+      const { $nt } = useNuxtApp();
+      if (this.web3.contract) {
+        const transaction = await this.web3.contract.markAsFound(payload);
+        await transaction.wait();
+        this.pets = await this.web3.contract.getAllPets();
+      } else {
+        $nt.show({
+          content: "No contract found!",
+          duration: 2000,
+          transition: {
+            name: "fadeIn",
+          },
+        });
+      }
+    },
+    async getPurchaseStatistics() {
+      const { $nt } = useNuxtApp();
+      ("");
+      if (this.web3.contract) {
+        const response = await this.web3.contract.getPurchaseStatistics();
+        const foodStatistics = await response;
+        return foodStatistics;
       } else {
         $nt.show({
           content: "No contract found!",

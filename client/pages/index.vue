@@ -132,6 +132,7 @@ const web3Store = useWeb3Store();
 const text = "We'll help you to find your pet.";
 const textArray = text.split(/(?!$)/u);
 const loading = ref(false);
+const statistics = ref(null);
 
 const foods = [
   {
@@ -182,9 +183,18 @@ const handleBuy = async (price) => {
   if (web3Store.web3.contract && web3Store.account) {
     loading.value = true;
     await web3Store.buyPetFood(price);
+    // Scroll to top
+    window.scrollTo(0, 0);
     loading.value = false;
   }
 };
+
+onMounted(async () => {
+  if (web3Store.web3.contract) {
+    statistics.value = await web3Store.getPurchaseStatistics();
+    console.log(statistics.value);
+  }
+});
 </script>
 
 <style scoped>
