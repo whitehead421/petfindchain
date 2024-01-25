@@ -35,6 +35,10 @@ defineProps({
   @apply bg-secondary text-primary;
 }
 
+.btn-tertiary {
+  @apply bg-dark text-white;
+}
+
 .btn:active {
   @apply scale-95;
 }

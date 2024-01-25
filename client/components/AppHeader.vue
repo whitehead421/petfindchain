@@ -22,7 +22,10 @@
         </NuxtLink>
       </ul>
     </nav>
-    <Metamask @click="initWeb3" :disabled="isAuthenticated" />
+    <Metamask @click="!isAuthenticated ? initWeb3() : web3Store.$reset()" />
+    <teleport to="body">
+      <UiSpinner v-if="web3Store.loading" />
+    </teleport>
   </header>
 </template>
 

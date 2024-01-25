@@ -4,7 +4,15 @@
     <section class="flex gap-8 p-20 border-b items-center bg-secondary">
       <!-- Text side -->
       <div class="flex flex-col gap-8 w-1/2 justify-center">
-        <h1 class="text-6xl">We'll help you to find your pet.</h1>
+        <h1 id="hero-text" class="text-6xl w-[90%]">
+          <span
+            v-for="(char, index) in textArray"
+            :key="`${char}-${index}`"
+            :style="{ animationDelay: `${index * 0.05}s` }"
+          >
+            {{ char === " " ? "\u00A0" : char }}
+          </span>
+        </h1>
         <p>
           We are an organization that helps people to find their lost pets and
           help others to find their pets by blockchain technology and AI.
@@ -136,3 +144,47 @@
     <Newsletter />
   </main>
 </template>
+
+<script setup>
+const text = "We'll help you to find your pet.";
+const textArray = text.split(/(?!$)/u);
+</script>
+
+<style scoped>
+#hero-text {
+  overflow: hidden;
+}
+
+span {
+  display: inline-block;
+  animation: reveal 1.5s cubic-bezier(0.77, 0, 0.175, 1) 0.5s;
+  animation-fill-mode: backwards;
+}
+
+p {
+  animation: fromBottomReveal 1.5s cubic-bezier(0.77, 0, 0.175, 1) 0.5s;
+  animation-fill-mode: backwards;
+}
+
+@keyframes reveal {
+  0% {
+    opacity: 0;
+    transform: translate(0, 100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes fromBottomReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>

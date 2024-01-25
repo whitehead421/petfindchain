@@ -6,7 +6,8 @@ const contractAddress = ref("0x8b43D7adDf99B107b29975eBe82f3700e0E60f6e");
 const contractABI = ref(CONTRACT.abi);
 
 export default async function () {
-  alert("initWeb3");
+  web3Store.loading = true;
+  await new Promise((resolve) => setTimeout(resolve, 2000));
   const { ethereum } = window;
   // Check for web3 provider
   if (typeof ethereum !== "undefined") {
@@ -18,7 +19,6 @@ export default async function () {
       autoConnect: false,
     };
     localStorage.setItem("preferences", JSON.stringify(preferences));
-    console.log('ether parsed:', ethers.parseEther("1.0"));
     try {
       // Ask to connect
       await ethereum.send("eth_requestAccounts");
@@ -50,12 +50,14 @@ export default async function () {
       });
     } catch (error) {
       // User denied account access
-      console.error("User denied web3 access", error);
+      alert("User denied web3 access");
+      web3Store.loading = false;
       return;
     }
-  }
-  // No web3 provider
+    web3Store.loading = false;
+  } // No web3 provider
   else {
+    web3Store.loading = false;
     console.error("No web3 provider detected");
     return;
   }

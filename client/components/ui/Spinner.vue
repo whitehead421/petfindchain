@@ -1,10 +1,15 @@
 <!-- spinner.vue -->
 <template>
   <div
-    class="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-black/60"
+    class="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-black/30"
   >
-    <div
-      class="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-primary"
-    ></div>
+    <div class="overflow-hidden rounded-full w-24 h-24 select-none">
+      <img
+        class="object-cover w-full h-full"
+        src="~/assets/images/walking-dog.gif"
+        width="100"
+        height="100"
+      />
+    </div>
   </div>
 </template>
