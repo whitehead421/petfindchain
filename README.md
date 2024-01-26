@@ -4,7 +4,7 @@ PetFindChain is a project that aims to ease the process of finding lost pets, th
 It is managed in a transparent, reliable and community-oriented manner.
 
 ## Structure
-![structure](https://i.hizliresim.com/cavium9.jpg)
+![structure](https://i.hizliresim.com/5nxqtlo.jpeg)
 
 ## Problem
 Difficulty in conducting an efficient search and rescue process for lost pets due to owners' inability to effectively coordinate and execute the search efforts.
@@ -39,7 +39,7 @@ PetFindChain, merkezi olmayan yapısı sayesinde kayıp evcil hayvanları bulma 
 Şeffaf, güvenilir ve toplum odaklı bir şekilde yönetilmektedir.
 
 ## Yapı
-![structure](https://i.hizliresim.com/cavium9.jpg)
+![structure](https://i.hizliresim.com/5nxqtlo.jpeg)
 
 ## Problem
 Kaybolan evcil hayvanların sahiplerinin etkili bir arama ve kurtarma süreci yürütememesi.
